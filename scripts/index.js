@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -30,25 +30,29 @@ const closeButton = document.querySelector(".modal__close-button");
 const modalWindow = document.querySelector(".modal");
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
-const nameInput = document.querySelector(".modal__input_name");
-const occupationInput = document.querySelector(".modal__input_occupation");
+const nameInput = document.querySelector(".modal__input_type_name");
+const occupationInput = document.querySelector(".modal__input_type_occupation");
 const profileFormElement = document.querySelector(".modal__form");
 
-function toggleModalVisibilyty() {
+function openModal() {
   nameInput.value = profileName.textContent;
   occupationInput.value = profileOccupation.textContent;
-  modalWindow.classList.toggle("modal_opened");
+  modalWindow.classList.add("modal_opened");
+}
+
+function closeModal() {
+  modalWindow.classList.remove("modal_opened");
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = occupationInput.value;
-  modalWindow.classList.toggle("modal_opened");
+  closeModal();
 }
 
-editButton.addEventListener("click", toggleModalVisibilyty);
-closeButton.addEventListener("click", toggleModalVisibilyty);
+editButton.addEventListener("click", openModal);
+closeButton.addEventListener("click", closeModal);
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 let cardTemplate = document.querySelector("#card").content;

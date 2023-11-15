@@ -17,7 +17,6 @@
 .modal__container {
   background-color: #fff;
   width: 430px;
-  height: 330px;
   border-radius: 10px;
   padding: 36px;
   box-sizing: border-box;
@@ -45,7 +44,7 @@
 .modal__input {
   height: 27px;
   border-style: none;
-  border-bottom: 1px solid rgba(84, 84, 84, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -68,11 +67,11 @@
   line-height: 1.2;
   cursor: pointer;
   margin-top: 48px;
+  transition: 0.2s ease;
 }
 
 .modal__save-button:hover {
   opacity: 0.8;
-  transition: 0.2s ease;
 }
 
 .modal__close-button {
@@ -97,7 +96,7 @@
     width: 282px;
     height: 322px;
     padding: 25px 22px;
-    margin: 123px auto;
+    margin: auto;
   }
 
   .modal__caption {
