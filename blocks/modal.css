@@ -1,4 +1,5 @@
 .modal {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -6,12 +7,16 @@
   right: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
   padding: 0 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: ease 0.7s;
 }
 
 .modal_opened {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: ease 0.7s;
 }
 
 .modal__container {
@@ -92,20 +97,29 @@
 }
 
 .modal__image-container {
-  max-width: 75vw;
-  max-height: 75vh;
-  box-sizing: border-box;
   margin: auto;
   position: relative;
 }
 
-.modal__type_image {
-  /* background: url(../images/bald-mountains.jpg) center no-repeat;*/
+.modal__type_image-preview {
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 999;
+  padding: 0 19px;
+}
+
+.modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
 }
 
 .modal__inscript {
   position: absolute;
-  top: 200px;
+  bottom: -30px;
   font-family: "Inter", Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -135,5 +149,18 @@
     height: 26px;
     top: -46px;
     right: 5px;
+  }
+
+  .modal__image-container {
+    display: flex;
+    width: 240px;
+    height: 299px;
+  }
+
+  .modal__close-button_type_image-preview {
+    width: 30px;
+    height: 30px;
+    right: -24px;
+    top: -32px;
   }
 }
