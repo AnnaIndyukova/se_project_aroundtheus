@@ -101,7 +101,7 @@
   position: relative;
 }
 
-.modal__type_image-preview {
+.modal-image-preview {
   display: flex;
   top: 0;
   bottom: 0;

@@ -37,9 +37,9 @@ const closeButtonImagePreview = document.querySelector(
   ".modal__close-button_type_image-preview"
 );
 
-const modalWindowEdit = document.querySelector(".modal__type_edit-profile");
-const modalWindowAdd = document.querySelector(".modal__type_add-card");
-const modalWindowImage = document.querySelector(".modal__type_image-preview");
+const modalWindowEdit = document.querySelector(".modal-edit-profile");
+const modalWindowAdd = document.querySelector(".modal-add-card");
+const modalWindowImage = document.querySelector(".modal-image-preview");
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 const nameInput = document.querySelector(".modal__input_type_name");
@@ -51,7 +51,7 @@ const placeTitleInput = document.querySelector(
 );
 const imageLinkInput = document.querySelector(".modal__input_type_image-link");
 const profileFormElement = document.querySelector(".modal__form_type_profile");
-const addCardFormElement = document.querySelector(".modal__type_add-card");
+const addCardFormElement = document.querySelector(".modal-add-card");
 
 function openModalEdit() {
   nameInput.value = profileName.textContent;
