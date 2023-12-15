@@ -85,18 +85,26 @@
             type="text"
             class="modal__input modal__input_type_name"
             name="name"
-            id="name"
+            id="modal__input_type_name"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="modal__input_error modal__input_type_name_error"></span>
           <input
             type="text"
             class="modal__input modal__input_type_occupation"
             name="occupation"
-            id="occupation"
+            id="modal__input_type_occupation"
             placeholder="About me"
+            minlength="2"
+            maxlength="200"
             required
           />
+          <span
+            class="modal__input_error modal__input_type_occupation_error"
+          ></span>
           <button class="modal__save-button" type="submit" aria-label="Save">
             Save
           </button>
@@ -120,19 +128,30 @@
             type="text"
             class="modal__input modal__input_type_place-title"
             name="place-title"
-            id="place-title"
+            id="modal__input_type_place-title"
             placeholder="Title"
+            maxlength="30"
             required
           />
+          <span
+            class="modal__input_error modal__input_type_place-title_error"
+          ></span>
           <input
-            type="text"
             class="modal__input modal__input_type_image-link"
             name="image-link"
-            id="image-link"
+            id="modal__input_type_image-link"
             placeholder="Image link"
+            type="url"
             required
           />
-          <button class="modal__save-button" type="submit" aria-label="Create">
+          <span
+            class="modal__input_error modal__input_type_image-link_error"
+          ></span>
+          <button
+            class="modal__save-button modal__save-button-disabled"
+            type="submit"
+            aria-label="Create"
+          >
             Create
           </button>
         </form>
@@ -152,5 +171,6 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

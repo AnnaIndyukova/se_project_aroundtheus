@@ -74,6 +74,8 @@ function handleAddCardFormSubmit(evt) {
   const cardLink = imageLinkInput.value;
   cardList.prepend(getCardElement({ name: cardTitle, link: cardLink }));
   evt.target.reset();
+  const buttonElement = evt.target.querySelector(".modal__save-button");
+  buttonElement.classList.add("modal__save-button-disabled");
   closePopup(modalWindowAdd);
 }
 
@@ -127,3 +129,27 @@ initialCards.forEach((item) => {
 
 nameInput.value = profileName.textContent;
 occupationInput.value = profileOccupation.textContent;
+
+const popups = Array.from(document.querySelectorAll(".modal"));
+function closeOpenedPopup() {
+  popups.forEach((popupItem) => {
+    if (popupItem.classList.contains("modal_opened")) {
+      closePopup(popupItem);
+    }
+  });
+}
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closeOpenedPopup();
+  }
+});
+
+popups.forEach((popupItem) => {
+  popupItem.addEventListener("click", (evt) => {
+    evt.preventDefault;
+    if (evt.target == popupItem) {
+      closeOpenedPopup();
+    }
+  });
+});
