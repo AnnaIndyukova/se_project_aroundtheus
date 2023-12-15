@@ -144,7 +144,7 @@
 .modal__error_visible {
 }
 
-.modal__input_error {
+.modal__input-error {
   color: #ff0000;
   font-family: "Inter", Arial, sans-serif;
   font-size: 12px;
