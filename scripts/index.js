@@ -53,12 +53,24 @@ const addCardFormElement = document.forms["add-place-form"];
 const previewModalImage = document.querySelector(".modal__image");
 const previewModalInscript = document.querySelector(".modal__inscript");
 
+function closeOpenedPopupListener(evt) {
+  if (evt.key === "Escape") {
+    popups.forEach((popupItem) => {
+      if (popupItem.classList.contains("modal_opened")) {
+        closePopup(popupItem);
+      }
+    });
+  }
+}
+
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeOpenedPopupListener);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeOpenedPopupListener);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -76,17 +88,12 @@ function handleAddCardFormSubmit(evt) {
   evt.target.reset();
   const buttonElement = evt.target.querySelector(".modal__save-button");
   buttonElement.classList.add("modal__save-button-disabled");
+  buttonElement.disabled = true;
   closePopup(modalWindowAdd);
 }
 
 editButton.addEventListener("click", () => openPopup(modalWindowEdit));
 addButton.addEventListener("click", () => openPopup(modalWindowAdd));
-
-const closeButtons = document.querySelectorAll(".modal__close-button");
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(popup));
-});
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
@@ -130,26 +137,14 @@ initialCards.forEach((item) => {
 nameInput.value = profileName.textContent;
 occupationInput.value = profileOccupation.textContent;
 
-const popups = Array.from(document.querySelectorAll(".modal"));
-function closeOpenedPopup() {
-  popups.forEach((popupItem) => {
-    if (popupItem.classList.contains("modal_opened")) {
-      closePopup(popupItem);
+const popups = document.querySelectorAll(".modal");
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_opened")) {
+      closePopup(popup);
     }
-  });
-}
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closeOpenedPopup();
-  }
-});
-
-popups.forEach((popupItem) => {
-  popupItem.addEventListener("click", (evt) => {
-    evt.preventDefault;
-    if (evt.target == popupItem) {
-      closeOpenedPopup();
+    if (evt.target.classList.contains("modal__close-button")) {
+      closePopup(popup);
     }
   });
 });
