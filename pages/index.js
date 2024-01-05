@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -56,11 +59,6 @@ function closeOpenedPopupListener(evt) {
 function openPopup(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeOpenedPopupListener);
-  if (modal == modalWindowEdit) {
-    nameInput.value = profileName.textContent;
-    occupationInput.value = profileOccupation.textContent;
-    formValidatorProfile.resetValidation();
-  }
 }
 
 function closePopup(modal) {
@@ -82,22 +80,29 @@ function handleImageClick(cardData) {
   openPopup(modalWindowImage);
 }
 
+function createCard(item) {
+  const cardElement = new Card(item, "#card", handleImageClick);
+  return cardElement.generateCard();
+}
+
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const cardTitle = placeTitleInput.value;
   const cardLink = imageLinkInput.value;
-  const card = new Card(
-    { name: cardTitle, link: cardLink },
-    "#card",
-    handleImageClick
-  );
-  cardList.prepend(card.generateCard());
+  const card = createCard({ name: cardTitle, link: cardLink });
+  cardList.prepend(card);
   evt.target.reset();
   formValidatorAdd.resetValidation();
   closePopup(modalWindowAdd);
 }
 
-editButton.addEventListener("click", () => openPopup(modalWindowEdit));
+editButton.addEventListener("click", () => {
+  nameInput.value = profileName.textContent;
+  occupationInput.value = profileOccupation.textContent;
+  formValidatorProfile.resetValidation();
+  openPopup(modalWindowEdit);
+});
+
 addButton.addEventListener("click", () => openPopup(modalWindowAdd));
 
 // enable form validation
@@ -109,7 +114,7 @@ const settingsObject = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-import FormValidator from "../components/formValidator.js";
+
 const formValidatorProfile = new FormValidator(
   settingsObject,
   profileFormElement
@@ -123,10 +128,9 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 // create initial cards
 const cardList = document.querySelector(".elements__list");
-import Card from "../components/card.js";
 initialCards.forEach((item) => {
-  const card = new Card(item, "#card", handleImageClick);
-  cardList.append(card.generateCard());
+  const card = createCard(item);
+  cardList.append(card);
 });
 
 // add listeners for popups closing

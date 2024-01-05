@@ -12,19 +12,15 @@ export default class Card {
       .content.querySelector(".card")
       .cloneNode(true);
     this._element = cardElement;
-    this._cardImageElement = cardElement.querySelector(".card__image");
   }
 
   _setEventListeners() {
-    const cardLikeButton = this._element.querySelector(".card__like-button");
-    cardLikeButton.addEventListener("click", () => {
-      cardLikeButton.classList.toggle("card__like-button-active");
+    this._cardLikeButton.addEventListener("click", () => {
+      this._cardLikeButton.classList.toggle("card__like-button-active");
     });
-    this._element
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => {
-        this._element.remove();
-      });
+    this._cardDeleteButton.addEventListener("click", () => {
+      this._element.remove();
+    });
     this._cardImageElement.addEventListener("click", () => {
       this._handleImageClick(this);
     });
@@ -32,6 +28,11 @@ export default class Card {
 
   generateCard() {
     this._getTemplate();
+    this._cardLikeButton = this._element.querySelector(".card__like-button");
+    this._cardDeleteButton = this._element.querySelector(
+      ".card__delete-button"
+    );
+    this._cardImageElement = this._element.querySelector(".card__image");
     this._setEventListeners();
     this._cardImageElement.src = this._image;
     this._cardImageElement.alt = this._text;
