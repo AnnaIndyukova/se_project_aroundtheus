@@ -6,26 +6,17 @@
     <meta name="description" content="Around The U.S." />
     <meta name="author" content="Anna Indyukova" />
     <meta name="keywords" content="US, nature, places" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Around The U.S.</title>
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img
-          src="./images/Logo-around.svg"
-          alt="Around the US logo"
-          class="header__logo"
-        />
+        <img id="image-logo" alt="Around the US logo" class="header__logo" />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="./images/Avatar.png"
-            alt="User's avatar"
-            class="profile__avatar"
-          />
+          <img id="image-avatar" alt="User's avatar" class="profile__avatar" />
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button
@@ -131,7 +122,7 @@
           <input
             type="text"
             class="modal__input modal__input_type_place-title"
-            name="place-title"
+            name="name"
             id="modal__input_type_place-title"
             placeholder="Title"
             maxlength="30"
@@ -143,7 +134,7 @@
           ></span>
           <input
             class="modal__input modal__input_type_image-link"
-            name="image-link"
+            name="link"
             id="modal__input_type_image-link"
             placeholder="Image link"
             type="url"
@@ -175,9 +166,5 @@
         <p class="modal__inscript"></p>
       </div>
     </div>
-
-    <script type="module" src="./pages/index.js"></script>
-    <script type="module" src="./components/Card.js"></script>
-    <script type="module" src="./components/FormValidator.js"></script>
   </body>
 </html>
