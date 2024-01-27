@@ -21,8 +21,6 @@ import {
   settingsObject,
   profileFormElement,
   addCardFormElement,
-  nameInput,
-  occupationInput,
 } from "../utils/constants.js";
 
 document.getElementById("image-logo").src = logoSrc;
@@ -46,8 +44,7 @@ const editUserInfoPopup = new PopupWithForm(
 editUserInfoPopup.setEventListeners();
 editButton.addEventListener("click", () => {
   const data = userInfo.getUserInfo();
-  nameInput.value = data.name;
-  occupationInput.value = data.occupation;
+  editUserInfoPopup.setInputValues(data);
   formValidatorProfile.resetValidation();
   editUserInfoPopup.open();
 });
@@ -61,9 +58,14 @@ formValidatorProfile.enableValidation();
 function handleImageClick(data) {
   imagePreviewPopup.open(data);
 }
+function createCard(item) {
+  const cardElement = new Card(item, cardSelector, () =>
+    handleImageClick(item)
+  );
+  return cardElement.generateCard();
+}
 function renderCard(item) {
-  const card = new Card(item, cardSelector, () => handleImageClick(item));
-  const cardElement = card.generateCard();
+  const cardElement = createCard(item);
   cardsList.addItem(cardElement);
 }
 const cardsList = new Section(
@@ -84,7 +86,10 @@ const addNewPlacePopup = new PopupWithForm(
 addNewPlacePopup.setEventListeners();
 const formValidatorAdd = new FormValidator(settingsObject, addCardFormElement);
 formValidatorAdd.enableValidation();
-addButton.addEventListener("click", () => addNewPlacePopup.open());
+addButton.addEventListener("click", () => {
+  formValidatorAdd.resetValidation();
+  addNewPlacePopup.open();
+});
 
 //popup With Image preview
 const imagePreviewPopup = new PopupWithImage(modalWindowImageSelector);

@@ -36,10 +36,6 @@ export const addButton = document.querySelector(".profile__add-button");
 export const editButton = document.querySelector(".profile__edit-button");
 export const profileFormElement = document.forms["profile-edit-form"];
 export const addCardFormElement = document.forms["add-place-form"];
-export const nameInput = document.querySelector(".modal__input_type_name");
-export const occupationInput = document.querySelector(
-  ".modal__input_type_occupation"
-);
 export const settingsObject = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
