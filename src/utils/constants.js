@@ -1,3 +1,4 @@
+//no need
 export const initialCards = [
   {
     name: "Yosemite Valley",
@@ -30,12 +31,20 @@ export const cardSelector = "#card";
 export const modalWindowEditSelector = ".modal-edit-profile";
 export const modalWindowAddSelector = ".modal-add-card";
 export const modalWindowImageSelector = ".modal-image-preview";
+export const modalWindowConfirmationSelector = ".modal-delete-confirmation";
+export const modalWindowUpdateAvatarSelector = ".modal-update-avatar";
 export const profileNameSelector = ".profile__name";
 export const profileOccupationSelector = ".profile__occupation";
+export const profileAvatarSelector = ".profile__avatar";
+export const profileAvatar = document.querySelector(".profile__avatar");
 export const addButton = document.querySelector(".profile__add-button");
 export const editButton = document.querySelector(".profile__edit-button");
 export const profileFormElement = document.forms["profile-edit-form"];
 export const addCardFormElement = document.forms["add-place-form"];
+export const updateAvatarFormElement = document.forms["update-avatar-form"];
+export const token = "ef731bd0-994c-4a18-a63a-cb60a790c9a3";
+export const baseUrl = "https://around-api.en.tripleten-services.com/v1";
+export const buttonTextSaving = "Saving...";
 export const settingsObject = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

@@ -14,11 +14,36 @@
   grid-template-columns: minmax(auto, 373px) auto;
   grid-gap: 10px 18px;
   align-items: center;
+  margin-left: 30px;
+}
+
+.profile__avatar-section {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
 }
 
 .profile__avatar {
   margin-right: 30px;
   object-fit: cover;
+  transition: 0.5s ease;
+  z-index: 3;
+}
+
+.profile__avatar:hover {
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.profile__edit-avatar {
+  width: 26px;
+  height: 26px;
+  align-self: center;
+  position: absolute;
+  left: 50px;
+  z-index: 2;
 }
 
 .profile__name {
